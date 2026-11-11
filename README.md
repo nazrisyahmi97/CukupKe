@@ -7,6 +7,7 @@ A personal monthly savings and finance control web app built on the **100% free 
 - **Wishlist & Savings Goal Planner**: Add what you want to buy, choose either a **Target Date** ("how much per month/week/day?") or a **Monthly Budget** ("when can I afford it?"), check feasibility against your surplus, and top up anytime.
 - **Custom Payday Cycle**: Track calendar months (`1st`) or your actual salary date (e.g. `25th – 24th`).
 - **1-Click Recurring Bills**: Save fixed monthly commitments once and log unpaid bills into the current cycle with one click.
+- **Malaysia Loan & DSR Calculator**: Calculate Housing (reducing balance, max 35 yrs), Car Hire Purchase (flat rate, max 9 yrs), and Personal loans (max 10 yrs) with Malaysia Debt Service Ratio (DSR) checks.
 - **50 / 30 / 20 Cashflow Split & Category Caps**: Color-coded progress bars (`Green`, `Amber` ≥ 80%, `Red` ≥ 100%) + CSV export.
 - **Free Auth**: Google Sign-In + Email/Password + Magic Link (works with Gmail, iCloud, or any email) protected by Supabase Row Level Security (RLS).
 - **Interactive Demo Mode**: Preview the full app immediately in your browser before connecting Supabase.

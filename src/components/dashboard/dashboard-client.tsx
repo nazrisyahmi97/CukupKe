@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import {
   ArrowDownRight,
   ArrowUpRight,
+  Calculator,
   ChevronLeft,
   ChevronRight,
   Download,
@@ -44,9 +45,10 @@ import type {
 } from "@/lib/types";
 import { BillsBudgetsPanel } from "./bills-budgets-panel";
 import { GoalsPanel } from "./goals-panel";
+import { LoanCalculatorPanel } from "./loan-calculator-panel";
 import { OnboardingModal } from "./onboarding-modal";
 
-type TabId = "overview" | "goals" | "bills" | "settings";
+type TabId = "overview" | "goals" | "bills" | "loans" | "settings";
 
 interface DashboardClientProps {
   mode: "demo" | "supabase";
@@ -700,6 +702,7 @@ export function DashboardClient({
               { id: "overview", label: "Overview", icon: Wallet },
               { id: "goals", label: "Savings Goals", icon: Target },
               { id: "bills", label: "Bills & Budgets", icon: Receipt },
+              { id: "loans", label: "Loans (MY)", icon: Calculator },
               { id: "settings", label: "Settings", icon: Settings },
             ] as const
           ).map((tab) => {
@@ -1180,6 +1183,19 @@ export function DashboardClient({
             onAddCategory={handleAddCategory}
             onUpdateCategory={handleUpdateCategory}
             onDeleteCategory={handleDeleteCategory}
+          />
+        )}
+
+        {activeTab === "loans" && (
+          <LoanCalculatorPanel
+            currency={currency}
+            monthlyIncome={summary.totalIncome}
+            existingFixedBills={summary.fixedBillsTotal}
+            safeToSpend={summary.safeToSpend}
+            categories={state.categories}
+            onAddBill={handleAddBill}
+            onAddGoal={handleAddGoal}
+            onNavigateTab={(tab) => setActiveTab(tab)}
           />
         )}
 
