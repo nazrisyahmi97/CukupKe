@@ -69,7 +69,8 @@ export function LoanCalculatorPanel({
   }
 
   const parsedPrice = Math.max(0, Number(assetPrice) || 0);
-  const parsedDownPct = kind === "personal" ? 0 : Math.min(90, Math.max(0, Number(downpaymentPct) || 0));
+  const parsedDownPct =
+    kind === "personal" ? 0 : Math.min(90, Math.max(0, Number(downpaymentPct) || 0));
   const downpaymentAmount = (parsedPrice * parsedDownPct) / 100;
 
   const result = useMemo(
@@ -134,8 +135,7 @@ export function LoanCalculatorPanel({
     const d = new Date();
     d.setMonth(d.getMonth() + 12);
 
-    const goalName =
-      kind === "housing" ? "House Downpayment" : "Car Downpayment";
+    const goalName = kind === "housing" ? "House Downpayment" : "Car Downpayment";
 
     await onAddGoal({
       name: goalName,
@@ -170,23 +170,23 @@ export function LoanCalculatorPanel({
               onClick={() => selectKind(id)}
               className={`rounded-2xl border p-4 text-left transition-all cursor-pointer ${
                 active
-                  ? "border-emerald-500/45 bg-emerald-500/10 shadow-lg shadow-emerald-500/5"
-                  : "border-slate-800 bg-slate-900/50 hover:border-slate-700"
+                  ? "border-[#52b788] bg-[#e6f6ec] shadow-xs"
+                  : "border-[#e2dfd7] bg-white hover:border-[#c8c3b8]"
               }`}
             >
               <div className="flex items-center gap-2.5">
                 <div
                   className={`w-9 h-9 rounded-xl flex items-center justify-center ${
                     active
-                      ? "bg-emerald-500/20 text-emerald-400"
-                      : "bg-slate-950 text-slate-400 border border-slate-800"
+                      ? "bg-[#d8f3dc] text-[#2d6a4f] border border-[#b7e4c7]"
+                      : "bg-[#f7f6f2] text-[#4a524d] border border-[#e2dfd7]"
                   }`}
                 >
                   <Icon className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm text-white">{item.label}</p>
-                  <p className="text-[11px] text-slate-400">{item.subtitle}</p>
+                  <p className="font-semibold text-sm text-[#1f2421]">{item.label}</p>
+                  <p className="text-[11px] text-[#4a524d]">{item.subtitle}</p>
                 </div>
               </div>
             </button>
@@ -195,9 +195,9 @@ export function LoanCalculatorPanel({
       </div>
 
       {notice && (
-        <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-xs text-emerald-200 flex flex-wrap items-center justify-between gap-2">
+        <div className="rounded-xl border border-[#b7e4c7] bg-[#e6f6ec] px-4 py-3 text-xs text-[#23543e] flex flex-wrap items-center justify-between gap-2">
           <span className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <CheckCircle2 className="w-4 h-4 text-[#2d6a4f]" />
             {notice}
           </span>
           <button
@@ -205,7 +205,7 @@ export function LoanCalculatorPanel({
             onClick={() =>
               onNavigateTab(notice.includes("Goal") ? "goals" : "bills")
             }
-            className="font-semibold underline text-emerald-300 cursor-pointer"
+            className="font-semibold underline text-[#1b4332] cursor-pointer"
           >
             View now →
           </button>
@@ -214,16 +214,16 @@ export function LoanCalculatorPanel({
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left: Inputs */}
-        <div className="lg:col-span-5 rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-4">
+        <div className="lg:col-span-5 rounded-2xl border border-[#e2dfd7] bg-white p-5 space-y-4 shadow-xs">
           <div className="flex items-center gap-2">
-            <Calculator className="w-5 h-5 text-emerald-400" />
-            <h2 className="font-semibold text-white text-base">
+            <Calculator className="w-5 h-5 text-[#2d6a4f]" />
+            <h2 className="font-semibold text-[#1f2421] text-base">
               {defaults.label} Inputs
             </h2>
           </div>
 
           <div>
-            <label className="block text-xs text-slate-400 mb-1">
+            <label className="block text-xs font-medium text-[#4a524d] mb-1">
               {defaults.assetLabel} ({currency})
             </label>
             <input
@@ -232,14 +232,14 @@ export function LoanCalculatorPanel({
               step="100"
               value={assetPrice}
               onChange={(e) => setAssetPrice(e.target.value)}
-              className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-emerald-500"
+              className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] font-mono focus:outline-none focus:border-[#52b788] focus:bg-white"
             />
           </div>
 
           {kind !== "personal" && (
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs text-slate-400 mb-1">
+                <label className="block text-xs font-medium text-[#4a524d] mb-1">
                   Downpayment (%)
                 </label>
                 <input
@@ -249,14 +249,14 @@ export function LoanCalculatorPanel({
                   step="1"
                   value={downpaymentPct}
                   onChange={(e) => setDownpaymentPct(e.target.value)}
-                  className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-emerald-500"
+                  className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] font-mono focus:outline-none focus:border-[#52b788] focus:bg-white"
                 />
               </div>
               <div>
-                <label className="block text-xs text-slate-400 mb-1">
+                <label className="block text-xs font-medium text-[#4a524d] mb-1">
                   Downpayment ({currency})
                 </label>
-                <div className="rounded-xl bg-slate-950/60 border border-slate-800/80 px-3.5 py-2.5 text-sm text-slate-300 font-mono">
+                <div className="rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] px-3.5 py-2.5 text-sm text-[#4a524d] font-mono">
                   {formatMoney(downpaymentAmount, currency)}
                 </div>
               </div>
@@ -265,7 +265,7 @@ export function LoanCalculatorPanel({
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs text-slate-400 mb-1">
+              <label className="block text-xs font-medium text-[#4a524d] mb-1">
                 Interest Rate (% p.a.)
               </label>
               <input
@@ -275,11 +275,11 @@ export function LoanCalculatorPanel({
                 step="0.05"
                 value={annualRate}
                 onChange={(e) => setAnnualRate(e.target.value)}
-                className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-emerald-500"
+                className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] font-mono focus:outline-none focus:border-[#52b788] focus:bg-white"
               />
             </div>
             <div>
-              <label className="block text-xs text-slate-400 mb-1">
+              <label className="block text-xs font-medium text-[#4a524d] mb-1">
                 Tenure (1–{defaults.maxTenure} yrs)
               </label>
               <input
@@ -288,23 +288,23 @@ export function LoanCalculatorPanel({
                 max={defaults.maxTenure}
                 value={tenureYears}
                 onChange={(e) => setTenureYears(e.target.value)}
-                className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-emerald-500"
+                className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] font-mono focus:outline-none focus:border-[#52b788] focus:bg-white"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs text-slate-400 mb-1.5">
+            <label className="block text-xs font-medium text-[#4a524d] mb-1.5">
               Calculation Rule
             </label>
-            <div className="grid grid-cols-2 gap-1 p-1 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+            <div className="grid grid-cols-2 gap-1 p-1 rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] text-xs">
               <button
                 type="button"
                 onClick={() => setMethod("reducing")}
                 className={`py-2 rounded-lg font-medium transition-colors cursor-pointer ${
                   method === "reducing"
-                    ? "bg-slate-800 text-white"
-                    : "text-slate-400 hover:text-white"
+                    ? "bg-white text-[#1f2421] shadow-xs"
+                    : "text-[#656d67] hover:text-[#1f2421]"
                 }`}
               >
                 Reducing Balance
@@ -314,8 +314,8 @@ export function LoanCalculatorPanel({
                 onClick={() => setMethod("flat")}
                 className={`py-2 rounded-lg font-medium transition-colors cursor-pointer ${
                   method === "flat"
-                    ? "bg-slate-800 text-white"
-                    : "text-slate-400 hover:text-white"
+                    ? "bg-white text-[#1f2421] shadow-xs"
+                    : "text-[#656d67] hover:text-[#1f2421]"
                 }`}
               >
                 Flat Rate (HP/Personal)
@@ -323,8 +323,8 @@ export function LoanCalculatorPanel({
             </div>
           </div>
 
-          <div className="rounded-xl bg-slate-950/70 border border-slate-800/80 p-3 text-xs text-slate-400 flex items-start gap-2 leading-relaxed">
-            <Info className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+          <div className="rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] p-3 text-xs text-[#4a524d] flex items-start gap-2 leading-relaxed">
+            <Info className="w-4 h-4 text-[#2d6a4f] shrink-0 mt-0.5" />
             <span>{defaults.ruleNote}</span>
           </div>
         </div>
@@ -332,19 +332,22 @@ export function LoanCalculatorPanel({
         {/* Right: Results + Malaysia DSR Check */}
         <div className="lg:col-span-7 space-y-5">
           {/* Main Monthly Installment Card */}
-          <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5">
+          <div className="rounded-2xl border border-[#b7e4c7] bg-[#e6f6ec] p-5">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <p className="text-xs uppercase tracking-wider text-emerald-300 font-medium">
+                <p className="text-xs uppercase tracking-wider text-[#2d6a4f] font-semibold">
                   Estimated Monthly Installment
                 </p>
-                <p className="text-3xl sm:text-4xl font-bold text-white font-mono mt-1">
+                <p className="text-3xl sm:text-4xl font-bold text-[#1f2421] font-mono mt-1">
                   {formatMoney(result.monthlyInstallment, currency)}
-                  <span className="text-sm font-normal text-slate-300"> / mo</span>
+                  <span className="text-sm font-normal text-[#4a524d]"> / mo</span>
                 </p>
-                <p className="text-xs text-slate-300 mt-1.5">
-                  Loan Principal: <strong className="font-mono">{formatMoney(result.principal, currency)}</strong> ·{" "}
-                  {result.months} months
+                <p className="text-xs text-[#4a524d] mt-1.5">
+                  Loan Principal:{" "}
+                  <strong className="font-mono text-[#1f2421]">
+                    {formatMoney(result.principal, currency)}
+                  </strong>{" "}
+                  · {result.months} months
                   {method === "flat" && result.effectiveAnnualRate > 0 && (
                     <> · Effective Rate (EIR): ~{result.effectiveAnnualRate.toFixed(2)}% p.a.</>
                   )}
@@ -353,21 +356,21 @@ export function LoanCalculatorPanel({
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-5 text-xs">
-              <div className="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
-                <span className="text-slate-400 block">Loan Principal</span>
-                <span className="font-mono font-semibold text-white text-sm">
+              <div className="rounded-xl bg-white border border-[#ccebd7] p-3">
+                <span className="text-[#656d67] block">Loan Principal</span>
+                <span className="font-mono font-semibold text-[#1f2421] text-sm">
                   {formatMoney(result.principal, currency)}
                 </span>
               </div>
-              <div className="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
-                <span className="text-slate-400 block">Total Interest</span>
-                <span className="font-mono font-semibold text-amber-300 text-sm">
+              <div className="rounded-xl bg-white border border-[#ccebd7] p-3">
+                <span className="text-[#656d67] block">Total Interest</span>
+                <span className="font-mono font-semibold text-[#b45309] text-sm">
                   {formatMoney(result.totalInterest, currency)}
                 </span>
               </div>
-              <div className="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
-                <span className="text-slate-400 block">Total Repayment</span>
-                <span className="font-mono font-semibold text-cyan-300 text-sm">
+              <div className="rounded-xl bg-white border border-[#ccebd7] p-3">
+                <span className="text-[#656d67] block">Total Repayment</span>
+                <span className="font-mono font-semibold text-[#2d6a4f] text-sm">
                   {formatMoney(result.totalPayment, currency)}
                 </span>
               </div>
@@ -375,17 +378,17 @@ export function LoanCalculatorPanel({
 
             {/* Principal vs Interest Bar */}
             <div className="mt-4 space-y-1.5">
-              <div className="flex justify-between text-[11px] text-slate-300">
+              <div className="flex justify-between text-[11px] text-[#23543e] font-medium">
                 <span>Principal ({principalPct}%)</span>
                 <span>Interest ({100 - principalPct}%)</span>
               </div>
-              <div className="h-2.5 w-full rounded-full bg-slate-950 overflow-hidden flex border border-slate-800">
+              <div className="h-2.5 w-full rounded-full bg-white overflow-hidden flex border border-[#b7e4c7]">
                 <div
-                  className="bg-emerald-500 h-full"
+                  className="bg-[#52b788] h-full"
                   style={{ width: `${principalPct}%` }}
                 />
                 <div
-                  className="bg-amber-400 h-full"
+                  className="bg-[#d4a373] h-full"
                   style={{ width: `${100 - principalPct}%` }}
                 />
               </div>
@@ -393,21 +396,21 @@ export function LoanCalculatorPanel({
           </div>
 
           {/* CukupKe DSR & Affordability Check */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-4">
+          <div className="rounded-2xl border border-[#e2dfd7] bg-white p-5 space-y-4 shadow-xs">
             <div className="flex items-center justify-between">
-              <h3 className="font-semibold text-white text-base">
+              <h3 className="font-semibold text-[#1f2421] text-base">
                 CukupKe? Malaysia DSR & Budget Check
               </h3>
               {dsr && (
                 <span
                   className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${
                     dsr.status === "Healthy"
-                      ? "bg-emerald-500/15 text-emerald-300 border-emerald-500/30"
+                      ? "bg-[#d8f3dc] text-[#1b4332] border-[#b7e4c7]"
                       : dsr.status === "Moderate"
-                      ? "bg-cyan-500/15 text-cyan-300 border-cyan-500/30"
+                      ? "bg-[#e6f6ec] text-[#2d6a4f] border-[#ccebd7]"
                       : dsr.status === "High"
-                      ? "bg-amber-500/15 text-amber-300 border-amber-500/30"
-                      : "bg-rose-500/15 text-rose-300 border-rose-500/30"
+                      ? "bg-[#fef3c7] text-[#92400e] border-[#fde68a]"
+                      : "bg-[#fdecec] text-[#9b2c2c] border-[#f2c6c6]"
                   }`}
                 >
                   DSR {dsr.dsrPercent}% · {dsr.status}
@@ -418,29 +421,25 @@ export function LoanCalculatorPanel({
             {dsr ? (
               <div className="space-y-3 text-xs">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div className="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
-                    <span className="text-slate-400 block">Your Income</span>
-                    <span className="font-mono font-semibold text-white text-sm">
+                  <div className="rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] p-3">
+                    <span className="text-[#656d67] block">Your Income</span>
+                    <span className="font-mono font-semibold text-[#1f2421] text-sm">
                       {formatMoney(monthlyIncome, currency)}
                     </span>
                   </div>
-                  <div className="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
-                    <span className="text-slate-400 block">
-                      Bills + This Loan
-                    </span>
-                    <span className="font-mono font-semibold text-slate-200 text-sm">
+                  <div className="rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] p-3">
+                    <span className="text-[#656d67] block">Bills + This Loan</span>
+                    <span className="font-mono font-semibold text-[#1f2421] text-sm">
                       {formatMoney(dsr.newTotalCommitments, currency)}
                     </span>
                   </div>
-                  <div className="rounded-xl bg-slate-950/70 border border-slate-800 p-3">
-                    <span className="text-slate-400 block">
-                      New Safe-to-Spend
-                    </span>
+                  <div className="rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] p-3">
+                    <span className="text-[#656d67] block">New Safe-to-Spend</span>
                     <span
                       className={`font-mono font-semibold text-sm ${
                         safeToSpend - result.monthlyInstallment >= 0
-                          ? "text-emerald-300"
-                          : "text-rose-400"
+                          ? "text-[#2d6a4f]"
+                          : "text-[#c94a4a]"
                       }`}
                     >
                       {formatMoney(safeToSpend - result.monthlyInstallment, currency)}
@@ -449,26 +448,26 @@ export function LoanCalculatorPanel({
                 </div>
 
                 {dsr.dsrPercent > 60 && (
-                  <p className="text-amber-300 flex items-center gap-1.5">
-                    <AlertTriangle className="w-4 h-4 shrink-0" />
+                  <p className="text-[#92400e] flex items-center gap-1.5">
+                    <AlertTriangle className="w-4 h-4 shrink-0 text-[#b45309]" />
                     Malaysian banks typically cap Debt Service Ratio (DSR) around 60%–70%.
                     Consider a larger downpayment or longer tenure.
                   </p>
                 )}
               </div>
             ) : (
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[#4a524d]">
                 Set your <strong>Base Monthly Income</strong> in Settings to see your
                 Malaysia Debt Service Ratio (DSR) and Safe-to-Spend impact.
               </p>
             )}
 
             {/* Quick Action Connectors */}
-            <div className="flex flex-wrap gap-2.5 pt-2 border-t border-slate-800">
+            <div className="flex flex-wrap gap-2.5 pt-2 border-t border-[#e2dfd7]">
               <button
                 type="button"
                 onClick={handleSaveInstallmentAsBill}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#1f2421] hover:bg-[#323a35] text-white px-3.5 py-2 rounded-xl transition-colors cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" />
                 Add Installment to Recurring Bills
@@ -478,7 +477,7 @@ export function LoanCalculatorPanel({
                 <button
                   type="button"
                   onClick={handleCreateDownpaymentGoal}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 px-3.5 py-2 rounded-xl transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#e6f6ec] hover:bg-[#d8f3dc] text-[#23543e] border border-[#b7e4c7] px-3.5 py-2 rounded-xl transition-colors cursor-pointer"
                 >
                   <Target className="w-3.5 h-3.5" />
                   Save {formatMoney(result.downpayment, currency)} Downpayment as Goal

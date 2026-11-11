@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "CukupKe — Monthly Savings & Finance Control",
   description:
-    "Track monthly Safe-to-Spend, control expenses, manage recurring bills, and plan wishlist savings goals for free.",
+    "Track monthly Safe-to-Spend, control expenses, manage recurring bills, calculate Malaysia loans, and plan savings goals.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#06090f] text-slate-100">
+      <body className="min-h-full flex flex-col bg-[#f7f6f2] text-[#1f2421] selection:bg-[#d8f3dc] selection:text-[#1f2421]">
         {children}
       </body>
     </html>

@@ -53,7 +53,7 @@ export default function DashboardPage({ searchParams }: PageProps<"/dashboard">)
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center text-slate-400 text-sm">
+        <div className="min-h-screen flex items-center justify-center text-[#656d67] text-sm">
           Loading dashboard...
         </div>
       }

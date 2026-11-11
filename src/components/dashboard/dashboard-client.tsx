@@ -579,7 +579,7 @@ export function DashboardClient({
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-slate-400 text-sm">
+      <div className="min-h-screen flex items-center justify-center text-[#656d67] text-sm">
         Loading your finance control center...
       </div>
     );
@@ -588,10 +588,10 @@ export function DashboardClient({
   if (!state || !summary) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center">
-        <p className="text-rose-400 text-sm mb-3">
+        <p className="text-[#c94a4a] text-sm mb-3">
           {error || "Unable to load finance data."}
         </p>
-        <Link href="/login" className="text-sm text-emerald-400 underline">
+        <Link href="/login" className="text-sm text-[#2d6a4f] underline">
           Return to Sign In
         </Link>
       </div>
@@ -611,14 +611,14 @@ export function DashboardClient({
   const savePct = Math.round((summary.bucketTotals.saving / denom) * 100);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#f7f6f2] text-[#1f2421]">
       {!state.profile.onboarding_completed && (
         <OnboardingModal profile={state.profile} onSave={handleUpdateProfile} />
       )}
 
       {/* Demo Banner */}
       {mode === "demo" && (
-        <div className="bg-emerald-500/10 border-b border-emerald-500/25 px-4 py-2 text-xs text-emerald-200 flex flex-wrap items-center justify-center gap-3">
+        <div className="bg-[#d8f3dc] border-b border-[#b7e4c7] px-4 py-2 text-xs text-[#1b4332] flex flex-wrap items-center justify-center gap-3">
           <span>
             <strong>Interactive Demo Mode</strong> — changes are saved locally in your browser.
           </span>
@@ -628,47 +628,47 @@ export function DashboardClient({
               const reset = resetDemoStorage(() => createDemoState());
               setState(reset);
             }}
-            className="inline-flex items-center gap-1 underline hover:text-white cursor-pointer"
+            className="inline-flex items-center gap-1 underline hover:text-[#0f291e] cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" />
             Reset demo data
           </button>
-          <Link href="/login" className="underline font-semibold text-emerald-300">
+          <Link href="/login" className="underline font-semibold text-[#2d6a4f]">
             Sign in with Google / Email
           </Link>
         </div>
       )}
 
       {/* Header */}
-      <header className="border-b border-slate-800 bg-slate-950/70 backdrop-blur-md sticky top-0 z-30">
+      <header className="border-b border-[#e2dfd7] bg-[#f7f6f2]/95 backdrop-blur-md sticky top-0 z-30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+              <div className="w-8 h-8 rounded-xl bg-[#d8f3dc] border border-[#b7e4c7] flex items-center justify-center text-[#2d6a4f]">
                 <PiggyBank className="w-4 h-4" />
               </div>
-              <span className="font-semibold text-white">
-                Cukup<span className="text-emerald-400">Ke</span>
+              <span className="font-semibold text-[#1f2421]">
+                Cukup<span className="text-[#2d6a4f]">Ke</span>
               </span>
             </Link>
 
             {/* Cycle Switcher */}
-            <div className="flex items-center gap-1 rounded-xl bg-slate-900 border border-slate-800 px-2 py-1 text-xs">
+            <div className="flex items-center gap-1 rounded-xl bg-white border border-[#e2dfd7] px-2 py-1 text-xs">
               <button
                 type="button"
                 onClick={() => setCycleOffset((o) => o - 1)}
-                className="p-1 text-slate-400 hover:text-white cursor-pointer"
+                className="p-1 text-[#656d67] hover:text-[#1f2421] cursor-pointer"
                 title="Previous cycle"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
               </button>
-              <span className="px-2 font-medium text-slate-200 min-w-[130px] text-center">
+              <span className="px-2 font-medium text-[#1f2421] min-w-[130px] text-center">
                 {summary.cycle.label}
               </span>
               <button
                 type="button"
                 onClick={() => setCycleOffset((o) => o + 1)}
-                className="p-1 text-slate-400 hover:text-white cursor-pointer"
+                className="p-1 text-[#656d67] hover:text-[#1f2421] cursor-pointer"
                 title="Next cycle"
               >
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -679,13 +679,13 @@ export function DashboardClient({
           <div className="flex items-center gap-3">
             {mode === "supabase" && (
               <>
-                <span className="hidden sm:inline text-xs text-slate-400">
+                <span className="hidden sm:inline text-xs text-[#4a524d]">
                   {state.profile.full_name || userEmail}
                 </span>
                 <button
                   type="button"
                   onClick={handleSignOut}
-                  className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-white border border-slate-800 bg-slate-900 px-3 py-1.5 rounded-lg cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#4a524d] hover:text-[#1f2421] border border-[#dcd8cf] bg-white px-3 py-1.5 rounded-lg cursor-pointer"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   Sign Out
@@ -715,8 +715,8 @@ export function DashboardClient({
                 onClick={() => setActiveTab(tab.id)}
                 className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-colors cursor-pointer ${
                   isActive
-                    ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
-                    : "text-slate-400 hover:text-white hover:bg-slate-900"
+                    ? "bg-[#1f2421] text-[#f7f6f2]"
+                    : "text-[#4a524d] hover:text-[#1f2421] hover:bg-[#efece6]"
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -729,7 +729,7 @@ export function DashboardClient({
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
         {error && (
-          <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-xs text-rose-200 flex items-center justify-between">
+          <div className="rounded-xl border border-[#f2c6c6] bg-[#fdecec] px-4 py-3 text-xs text-[#9b2c2c] flex items-center justify-between">
             <span>{error}</span>
             <button
               type="button"
@@ -748,57 +748,61 @@ export function DashboardClient({
               <div
                 className={`rounded-2xl border p-4 ${
                   summary.safeToSpend >= 0
-                    ? "border-emerald-500/35 bg-emerald-500/10"
-                    : "border-rose-500/40 bg-rose-500/10"
+                    ? "border-[#b7e4c7] bg-[#e6f6ec]"
+                    : "border-[#f2c6c6] bg-[#fdecec]"
                 }`}
               >
-                <p className="text-xs font-medium uppercase tracking-wider text-emerald-300">
+                <p
+                  className={`text-xs font-semibold uppercase tracking-wider ${
+                    summary.safeToSpend >= 0 ? "text-[#2d6a4f]" : "text-[#9b2c2c]"
+                  }`}
+                >
                   Safe-to-Spend
                 </p>
-                <p className="text-2xl font-bold text-white font-mono mt-1">
+                <p className="text-2xl font-bold text-[#1f2421] font-mono mt-1">
                   {formatMoney(summary.safeToSpend, currency)}
                 </p>
-                <p className="text-xs text-slate-300 mt-1">
+                <p className="text-xs text-[#4a524d] mt-1">
                   {cycleOffset === 0
                     ? `~${formatMoney(summary.dailyAllowance, currency)}/day (${summary.cycle.daysRemaining}d left)`
                     : `${summary.cycle.totalDays} days in cycle`}
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <p className="text-xs font-medium uppercase tracking-wider text-slate-400">
+              <div className="rounded-2xl border border-[#e2dfd7] bg-white p-4 shadow-xs">
+                <p className="text-xs font-medium uppercase tracking-wider text-[#656d67]">
                   Cycle Income
                 </p>
-                <p className="text-2xl font-bold text-white font-mono mt-1">
+                <p className="text-2xl font-bold text-[#1f2421] font-mono mt-1">
                   {formatMoney(summary.totalIncome, currency)}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-[#656d67] mt-1">
                   Base {formatMoney(summary.baseIncome, currency)} +{" "}
                   {formatMoney(summary.extraIncome, currency)} extra
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <p className="text-xs font-medium uppercase tracking-wider text-slate-400">
+              <div className="rounded-2xl border border-[#e2dfd7] bg-white p-4 shadow-xs">
+                <p className="text-xs font-medium uppercase tracking-wider text-[#656d67]">
                   Spent + Pending Bills
                 </p>
-                <p className="text-2xl font-bold text-white font-mono mt-1">
+                <p className="text-2xl font-bold text-[#1f2421] font-mono mt-1">
                   {formatMoney(summary.totalSpent + summary.pendingBillsTotal, currency)}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-[#656d67] mt-1">
                   {formatMoney(summary.totalSpent, currency)} spent ·{" "}
                   {formatMoney(summary.pendingBillsTotal, currency)} unpaid bills
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-                <p className="text-xs font-medium uppercase tracking-wider text-cyan-400">
+              <div className="rounded-2xl border border-[#e2dfd7] bg-white p-4 shadow-xs">
+                <p className="text-xs font-medium uppercase tracking-wider text-[#2d6a4f]">
                   Locked Monthly Savings
                 </p>
-                <p className="text-2xl font-bold text-white font-mono mt-1">
+                <p className="text-2xl font-bold text-[#1f2421] font-mono mt-1">
                   {formatMoney(summary.totalLockedSavings, currency)}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-[#656d67] mt-1">
                   {formatMoney(summary.generalSavingsTarget, currency)} base +{" "}
                   {formatMoney(summary.goalReservedMonthly, currency)} goals
                 </p>
@@ -809,20 +813,20 @@ export function DashboardClient({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
               {/* Left Column: Quick-Add + 50/30/20 */}
               <div className="lg:col-span-5 space-y-5">
-                <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                  <h2 className="font-semibold text-white text-base mb-3">
+                <div className="rounded-2xl border border-[#e2dfd7] bg-white p-5 shadow-xs">
+                  <h2 className="font-semibold text-[#1f2421] text-base mb-3">
                     Quick Add Transaction
                   </h2>
 
                   <form onSubmit={handleAddTransaction} className="space-y-3">
-                    <div className="grid grid-cols-2 gap-1 p-1 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+                    <div className="grid grid-cols-2 gap-1 p-1 rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] text-xs">
                       <button
                         type="button"
                         onClick={() => setTxType("expense")}
                         className={`py-2 rounded-lg font-semibold transition-colors cursor-pointer ${
                           txType === "expense"
-                            ? "bg-rose-500/20 text-rose-300"
-                            : "text-slate-400 hover:text-white"
+                            ? "bg-[#fdecec] text-[#9b2c2c]"
+                            : "text-[#656d67] hover:text-[#1f2421]"
                         }`}
                       >
                         Expense
@@ -832,8 +836,8 @@ export function DashboardClient({
                         onClick={() => setTxType("income")}
                         className={`py-2 rounded-lg font-semibold transition-colors cursor-pointer ${
                           txType === "income"
-                            ? "bg-emerald-500/20 text-emerald-300"
-                            : "text-slate-400 hover:text-white"
+                            ? "bg-[#d8f3dc] text-[#1b4332]"
+                            : "text-[#656d67] hover:text-[#1f2421]"
                         }`}
                       >
                         Extra Income
@@ -842,7 +846,7 @@ export function DashboardClient({
 
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs text-slate-400 mb-1">
+                        <label className="block text-xs font-medium text-[#4a524d] mb-1">
                           Amount ({currency})
                         </label>
                         <input
@@ -853,30 +857,32 @@ export function DashboardClient({
                           value={txAmount}
                           onChange={(e) => setTxAmount(e.target.value)}
                           placeholder="15.50"
-                          className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3 py-2 text-sm text-white font-mono focus:outline-none focus:border-emerald-500"
+                          className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3 py-2 text-sm text-[#1f2421] font-mono focus:outline-none focus:border-[#52b788] focus:bg-white"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs text-slate-400 mb-1">Date</label>
+                        <label className="block text-xs font-medium text-[#4a524d] mb-1">
+                          Date
+                        </label>
                         <input
                           type="date"
                           required
                           value={txDate}
                           onChange={(e) => setTxDate(e.target.value)}
-                          className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+                          className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3 py-2 text-sm text-[#1f2421] focus:outline-none focus:border-[#52b788] focus:bg-white"
                         />
                       </div>
                     </div>
 
                     {txType === "expense" && (
                       <div>
-                        <label className="block text-xs text-slate-400 mb-1">
+                        <label className="block text-xs font-medium text-[#4a524d] mb-1">
                           Category
                         </label>
                         <select
                           value={txCategoryId}
                           onChange={(e) => setTxCategoryId(e.target.value)}
-                          className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+                          className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3 py-2 text-sm text-[#1f2421] focus:outline-none focus:border-[#52b788] focus:bg-white"
                         >
                           {state.categories.map((cat) => (
                             <option key={cat.id} value={cat.id}>
@@ -888,7 +894,7 @@ export function DashboardClient({
                     )}
 
                     <div>
-                      <label className="block text-xs text-slate-400 mb-1">
+                      <label className="block text-xs font-medium text-[#4a524d] mb-1">
                         Note (optional)
                       </label>
                       <input
@@ -900,14 +906,14 @@ export function DashboardClient({
                             ? "e.g. Lunch, Petrol, Groceries"
                             : "e.g. Side gig, Bonus"
                         }
-                        className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
+                        className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3 py-2 text-sm text-[#1f2421] placeholder:text-[#9aa19c] focus:outline-none focus:border-[#52b788] focus:bg-white"
                       />
                     </div>
 
                     <button
                       type="submit"
                       disabled={addingTx}
-                      className="w-full flex items-center justify-center gap-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold py-2.5 rounded-xl transition-colors disabled:opacity-60 cursor-pointer"
+                      className="w-full flex items-center justify-center gap-1.5 bg-[#2d6a4f] hover:bg-[#23543e] text-white font-semibold py-2.5 rounded-xl transition-colors disabled:opacity-60 cursor-pointer"
                     >
                       <Plus className="w-4 h-4" />
                       {addingTx ? "Saving..." : "Log Transaction"}
@@ -916,64 +922,64 @@ export function DashboardClient({
                 </div>
 
                 {/* 50 / 30 / 20 Health Split */}
-                <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-3">
+                <div className="rounded-2xl border border-[#e2dfd7] bg-white p-5 space-y-3 shadow-xs">
                   <div className="flex items-center justify-between">
-                    <h2 className="font-semibold text-white text-sm">
+                    <h2 className="font-semibold text-[#1f2421] text-sm">
                       50 / 30 / 20 Cashflow Split
                     </h2>
-                    <span className="text-xs text-slate-400">
+                    <span className="text-xs text-[#4a524d]">
                       Projected Save:{" "}
-                      <strong className="text-cyan-300 font-mono">
+                      <strong className="text-[#2d6a4f] font-mono">
                         {formatMoney(summary.projectedSavings, currency)}
                       </strong>
                     </span>
                   </div>
 
-                  <div className="h-3 w-full rounded-full bg-slate-950 overflow-hidden flex border border-slate-800">
+                  <div className="h-3 w-full rounded-full bg-[#efece6] overflow-hidden flex border border-[#e2dfd7]">
                     <div
-                      className="bg-emerald-500 h-full"
+                      className="bg-[#52b788] h-full"
                       style={{ width: `${Math.min(100, needPct)}%` }}
                       title={`Needs ${needPct}%`}
                     />
                     <div
-                      className="bg-amber-400 h-full"
+                      className="bg-[#d4a373] h-full"
                       style={{ width: `${Math.min(100, wantPct)}%` }}
                       title={`Wants ${wantPct}%`}
                     />
                     <div
-                      className="bg-cyan-400 h-full"
+                      className="bg-[#2d6a4f] h-full"
                       style={{ width: `${Math.min(100, savePct)}%` }}
                       title={`Savings ${savePct}%`}
                     />
                   </div>
 
                   <div className="grid grid-cols-3 gap-2 text-xs">
-                    <div className="rounded-xl bg-slate-950/70 p-2.5 border border-slate-800/80">
-                      <span className="text-emerald-400 font-medium block">
+                    <div className="rounded-xl bg-[#f7f6f2] p-2.5 border border-[#e2dfd7]">
+                      <span className="text-[#2d6a4f] font-semibold block">
                         Needs ({needPct}%)
                       </span>
-                      <span className="text-slate-300 font-mono">
+                      <span className="text-[#1f2421] font-mono">
                         {formatMoney(summary.bucketTotals.need, currency)}
                       </span>
-                      <span className="text-[10px] text-slate-500 block">Target ≤ 50%</span>
+                      <span className="text-[10px] text-[#737b75] block">Target ≤ 50%</span>
                     </div>
-                    <div className="rounded-xl bg-slate-950/70 p-2.5 border border-slate-800/80">
-                      <span className="text-amber-300 font-medium block">
+                    <div className="rounded-xl bg-[#f7f6f2] p-2.5 border border-[#e2dfd7]">
+                      <span className="text-[#92400e] font-semibold block">
                         Wants ({wantPct}%)
                       </span>
-                      <span className="text-slate-300 font-mono">
+                      <span className="text-[#1f2421] font-mono">
                         {formatMoney(summary.bucketTotals.want, currency)}
                       </span>
-                      <span className="text-[10px] text-slate-500 block">Target ≤ 30%</span>
+                      <span className="text-[10px] text-[#737b75] block">Target ≤ 30%</span>
                     </div>
-                    <div className="rounded-xl bg-slate-950/70 p-2.5 border border-slate-800/80">
-                      <span className="text-cyan-300 font-medium block">
+                    <div className="rounded-xl bg-[#f7f6f2] p-2.5 border border-[#e2dfd7]">
+                      <span className="text-[#1b4332] font-semibold block">
                         Savings ({savePct}%)
                       </span>
-                      <span className="text-slate-300 font-mono">
+                      <span className="text-[#1f2421] font-mono">
                         {formatMoney(summary.bucketTotals.saving, currency)}
                       </span>
-                      <span className="text-[10px] text-slate-500 block">Target ≥ 20%</span>
+                      <span className="text-[10px] text-[#737b75] block">Target ≥ 20%</span>
                     </div>
                   </div>
                 </div>
@@ -982,9 +988,9 @@ export function DashboardClient({
               {/* Right Column: Category Budgets + Pending Bills Alert + Transactions */}
               <div className="lg:col-span-7 space-y-5">
                 {summary.pendingBills.length > 0 && (
-                  <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 flex flex-wrap items-center justify-between gap-3">
-                    <div className="text-xs text-amber-100">
-                      <strong className="text-amber-300">
+                  <div className="rounded-2xl border border-[#fde68a] bg-[#fef9e7] p-4 flex flex-wrap items-center justify-between gap-3">
+                    <div className="text-xs text-[#78350f]">
+                      <strong className="text-[#92400e]">
                         {summary.pendingBills.length} unpaid fixed bill(s)
                       </strong>{" "}
                       ({formatMoney(summary.pendingBillsTotal, currency)}) already reserved from
@@ -993,7 +999,7 @@ export function DashboardClient({
                     <button
                       type="button"
                       onClick={handleApplyPendingBills}
-                      className="text-xs font-semibold bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-1.5 rounded-lg cursor-pointer"
+                      className="text-xs font-semibold bg-[#1f2421] hover:bg-[#323a35] text-white px-3 py-1.5 rounded-lg cursor-pointer"
                     >
                       Log All Unpaid Bills
                     </button>
@@ -1001,15 +1007,15 @@ export function DashboardClient({
                 )}
 
                 {/* Category Limits */}
-                <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div className="rounded-2xl border border-[#e2dfd7] bg-white p-5 shadow-xs">
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="font-semibold text-white text-base">
+                    <h2 className="font-semibold text-[#1f2421] text-base">
                       Category Budgets
                     </h2>
                     <button
                       type="button"
                       onClick={() => setActiveTab("bills")}
-                      className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-white cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs text-[#4a524d] hover:text-[#1f2421] cursor-pointer"
                     >
                       <SlidersHorizontal className="w-3.5 h-3.5" />
                       Edit Limits
@@ -1023,30 +1029,30 @@ export function DashboardClient({
                       const pct = limit > 0 ? Math.min(100, Math.round((spent / limit) * 100)) : 0;
                       const barColor =
                         limit > 0 && spent >= limit
-                          ? "bg-rose-500"
+                          ? "bg-[#c94a4a]"
                           : limit > 0 && spent >= limit * 0.8
-                          ? "bg-amber-400"
-                          : "bg-emerald-500";
+                          ? "bg-[#d97706]"
+                          : "bg-[#52b788]";
 
                       return (
                         <div key={cat.id} className="space-y-1">
                           <div className="flex items-center justify-between text-xs">
-                            <span className="text-slate-200 font-medium flex items-center gap-2">
+                            <span className="text-[#1f2421] font-medium flex items-center gap-2">
                               <span
                                 className="w-2 h-2 rounded-full"
                                 style={{ backgroundColor: cat.color }}
                               />
                               {cat.name}
                             </span>
-                            <span className="font-mono text-slate-400">
-                              <strong className="text-slate-200">
+                            <span className="font-mono text-[#656d67]">
+                              <strong className="text-[#1f2421]">
                                 {formatMoney(spent, currency)}
                               </strong>{" "}
                               / {limit > 0 ? formatMoney(limit, currency) : "No cap"}
                             </span>
                           </div>
                           {limit > 0 && (
-                            <div className="h-2 rounded-full bg-slate-950 overflow-hidden border border-slate-800/80">
+                            <div className="h-2 rounded-full bg-[#efece6] overflow-hidden border border-[#e2dfd7]">
                               <div
                                 className={`h-full rounded-full transition-all ${barColor}`}
                                 style={{ width: `${pct}%` }}
@@ -1060,9 +1066,9 @@ export function DashboardClient({
                 </div>
 
                 {/* Transactions List */}
-                <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div className="rounded-2xl border border-[#e2dfd7] bg-white p-5 shadow-xs">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-                    <h2 className="font-semibold text-white text-base">
+                    <h2 className="font-semibold text-[#1f2421] text-base">
                       Cycle Transactions ({filteredTransactions.length})
                     </h2>
 
@@ -1072,7 +1078,7 @@ export function DashboardClient({
                         onChange={(e) =>
                           setTxFilter(e.target.value as "all" | "expense" | "income")
                         }
-                        className="rounded-lg bg-slate-950 border border-slate-800 px-2.5 py-1.5 text-xs text-slate-300"
+                        className="rounded-lg bg-[#f7f6f2] border border-[#dcd8cf] px-2.5 py-1.5 text-xs text-[#1f2421]"
                       >
                         <option value="all">All</option>
                         <option value="expense">Expenses</option>
@@ -1082,7 +1088,7 @@ export function DashboardClient({
                       <button
                         type="button"
                         onClick={handleExportCsv}
-                        className="inline-flex items-center gap-1 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 px-2.5 py-1.5 text-xs text-slate-300 cursor-pointer"
+                        className="inline-flex items-center gap-1 rounded-lg bg-[#f7f6f2] border border-[#dcd8cf] hover:bg-[#efece6] px-2.5 py-1.5 text-xs text-[#1f2421] cursor-pointer"
                       >
                         <Download className="w-3.5 h-3.5" />
                         CSV
@@ -1091,7 +1097,7 @@ export function DashboardClient({
                   </div>
 
                   {filteredTransactions.length === 0 ? (
-                    <p className="text-xs text-slate-500 text-center py-8">
+                    <p className="text-xs text-[#737b75] text-center py-8">
                       No transactions logged in this cycle yet.
                     </p>
                   ) : (
@@ -1103,14 +1109,14 @@ export function DashboardClient({
                         return (
                           <div
                             key={tx.id}
-                            className="flex items-center justify-between gap-3 rounded-xl bg-slate-950/70 border border-slate-800/80 px-3.5 py-2.5"
+                            className="flex items-center justify-between gap-3 rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] px-3.5 py-2.5"
                           >
                             <div className="flex items-center gap-3 min-w-0">
                               <div
                                 className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
                                   tx.type === "income"
-                                    ? "bg-emerald-500/15 text-emerald-400"
-                                    : "bg-rose-500/15 text-rose-400"
+                                    ? "bg-[#d8f3dc] text-[#2d6a4f]"
+                                    : "bg-[#fdecec] text-[#c94a4a]"
                                 }`}
                               >
                                 {tx.type === "income" ? (
@@ -1120,10 +1126,10 @@ export function DashboardClient({
                                 )}
                               </div>
                               <div className="min-w-0">
-                                <p className="text-sm text-white font-medium truncate">
+                                <p className="text-sm text-[#1f2421] font-medium truncate">
                                   {tx.description}
                                 </p>
-                                <p className="text-[11px] text-slate-500">
+                                <p className="text-[11px] text-[#656d67]">
                                   {tx.tx_date} · {catName}
                                 </p>
                               </div>
@@ -1132,7 +1138,7 @@ export function DashboardClient({
                             <div className="flex items-center gap-2 shrink-0">
                               <span
                                 className={`font-mono text-sm font-semibold ${
-                                  tx.type === "income" ? "text-emerald-400" : "text-slate-200"
+                                  tx.type === "income" ? "text-[#2d6a4f]" : "text-[#1f2421]"
                                 }`}
                               >
                                 {tx.type === "income" ? "+" : "-"}
@@ -1141,7 +1147,7 @@ export function DashboardClient({
                               <button
                                 type="button"
                                 onClick={() => handleDeleteTransaction(tx.id)}
-                                className="p-1.5 text-slate-500 hover:text-rose-400 cursor-pointer"
+                                className="p-1.5 text-[#737b75] hover:text-[#c94a4a] cursor-pointer"
                                 title="Delete transaction"
                               >
                                 <Trash2 className="w-3.5 h-3.5" />
@@ -1238,32 +1244,36 @@ function SettingsPanel({
   }
 
   return (
-    <div className="max-w-xl rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-      <h2 className="font-semibold text-white text-lg mb-1">
+    <div className="max-w-xl rounded-2xl border border-[#e2dfd7] bg-white p-6 shadow-xs">
+      <h2 className="font-semibold text-[#1f2421] text-lg mb-1">
         Finance & Cycle Settings
       </h2>
-      <p className="text-xs text-slate-400 mb-5">
+      <p className="text-xs text-[#4a524d] mb-5">
         Adjust your payday cycle date, monthly take-home income, and general savings lock.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs text-slate-400 mb-1">Display Name</label>
+          <label className="block text-xs font-medium text-[#4a524d] mb-1">
+            Display Name
+          </label>
           <input
             type="text"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500"
+            className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] focus:outline-none focus:border-[#52b788] focus:bg-white"
           />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs text-slate-400 mb-1">Currency</label>
+            <label className="block text-xs font-medium text-[#4a524d] mb-1">
+              Currency
+            </label>
             <select
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500"
+              className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] focus:outline-none focus:border-[#52b788] focus:bg-white"
             >
               {CURRENCIES.map((c) => (
                 <option key={c.code} value={c.code}>
@@ -1274,7 +1284,7 @@ function SettingsPanel({
           </div>
 
           <div>
-            <label className="block text-xs text-slate-400 mb-1">
+            <label className="block text-xs font-medium text-[#4a524d] mb-1">
               Payday / Cycle Start Day (1–28)
             </label>
             <input
@@ -1283,14 +1293,14 @@ function SettingsPanel({
               max={28}
               value={cycleDay}
               onChange={(e) => setCycleDay(e.target.value)}
-              className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500"
+              className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] focus:outline-none focus:border-[#52b788] focus:bg-white"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs text-slate-400 mb-1">
+            <label className="block text-xs font-medium text-[#4a524d] mb-1">
               Base Monthly Income ({currency})
             </label>
             <input
@@ -1299,12 +1309,12 @@ function SettingsPanel({
               step="0.01"
               value={income}
               onChange={(e) => setIncome(e.target.value)}
-              className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-emerald-500"
+              className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] font-mono focus:outline-none focus:border-[#52b788] focus:bg-white"
             />
           </div>
 
           <div>
-            <label className="block text-xs text-slate-400 mb-1">
+            <label className="block text-xs font-medium text-[#4a524d] mb-1">
               General Monthly Savings Target ({currency})
             </label>
             <input
@@ -1313,7 +1323,7 @@ function SettingsPanel({
               step="0.01"
               value={savingsTarget}
               onChange={(e) => setSavingsTarget(e.target.value)}
-              className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-emerald-500"
+              className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] font-mono focus:outline-none focus:border-[#52b788] focus:bg-white"
             />
           </div>
         </div>
@@ -1321,12 +1331,12 @@ function SettingsPanel({
         <div className="flex items-center gap-3 pt-2">
           <button
             type="submit"
-            className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors cursor-pointer"
+            className="bg-[#2d6a4f] hover:bg-[#23543e] text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors cursor-pointer"
           >
             Save Settings
           </button>
           {savedNotice && (
-            <span className="text-xs text-emerald-400">Settings saved!</span>
+            <span className="text-xs font-medium text-[#2d6a4f]">Settings saved!</span>
           )}
         </div>
       </form>

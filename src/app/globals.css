@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #06090f;
-  --foreground: #f1f5f9;
+  --background: #f7f6f2;
+  --foreground: #1f2421;
+  --surface: #ffffff;
+  --surface-muted: #efece6;
+  --border-subtle: #e2dfd7;
+  --mint-soft: #dcf2e4;
+  --mint-base: #52b788;
+  --mint-deep: #2d6a4f;
 }
 
 @theme inline {
@@ -13,11 +19,7 @@
 }
 
 body {
-  background: radial-gradient(circle at top center, #0f1c2e 0%, #06090f 55%);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.8);
 }

@@ -333,10 +333,10 @@ export function computeCycleSummary(
 }
 
 export const DEFAULT_CATEGORY_TEMPLATES: Array<Omit<Category, "id" | "user_id">> = [
-  { name: "Housing & Utilities", bucket: "need", monthly_limit: 1200, color: "#0ea5e9", is_default: true },
-  { name: "Food & Groceries", bucket: "need", monthly_limit: 700, color: "#10b981", is_default: true },
-  { name: "Transport & Fuel", bucket: "need", monthly_limit: 400, color: "#6366f1", is_default: true },
-  { name: "Dining & Coffee", bucket: "want", monthly_limit: 350, color: "#f59e0b", is_default: true },
-  { name: "Shopping & Leisure", bucket: "want", monthly_limit: 300, color: "#ec4899", is_default: true },
-  { name: "Subscriptions", bucket: "want", monthly_limit: 120, color: "#8b5cf6", is_default: true },
+  { name: "Housing & Utilities", bucket: "need", monthly_limit: 1200, color: "#4f6d7a", is_default: true },
+  { name: "Food & Groceries", bucket: "need", monthly_limit: 700, color: "#52b788", is_default: true },
+  { name: "Transport & Fuel", bucket: "need", monthly_limit: 400, color: "#2d6a4f", is_default: true },
+  { name: "Dining & Coffee", bucket: "want", monthly_limit: 350, color: "#d4a373", is_default: true },
+  { name: "Shopping & Leisure", bucket: "want", monthly_limit: 300, color: "#c97a63", is_default: true },
+  { name: "Subscriptions", bucket: "want", monthly_limit: 120, color: "#7c6a96", is_default: true },
 ];

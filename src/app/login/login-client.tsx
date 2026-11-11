@@ -114,49 +114,49 @@ export function LoginClient({ supabaseConfigured }: { supabaseConfigured: boolea
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-10">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-10 bg-[#f7f6f2]">
       <div className="w-full max-w-md">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white mb-6 transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm text-[#4a524d] hover:text-[#1f2421] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to home
         </Link>
 
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8 shadow-2xl">
+        <div className="rounded-2xl border border-[#e2dfd7] bg-white p-6 sm:p-8 shadow-sm">
           <div className="flex items-center gap-2.5 mb-2">
-            <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <div className="w-9 h-9 rounded-xl bg-[#d8f3dc] border border-[#b7e4c7] flex items-center justify-center text-[#2d6a4f]">
               <PiggyBank className="w-5 h-5" />
             </div>
-            <h1 className="text-xl font-bold text-white">
-              Sign in to Cukup<span className="text-emerald-400">Ke</span>
+            <h1 className="text-xl font-bold text-[#1f2421]">
+              Sign in to Cukup<span className="text-[#2d6a4f]">Ke</span>
             </h1>
           </div>
-          <p className="text-sm text-slate-400 mb-6">
-            Free Google login or Email / Magic Link (supports Gmail, iCloud, or any email).
+          <p className="text-sm text-[#4a524d] mb-6">
+            Free Google login or Email / Magic Link (works with Gmail, iCloud, or any email).
           </p>
 
           {!supabaseConfigured && (
-            <div className="mb-5 rounded-xl border border-amber-500/30 bg-amber-500/10 p-3.5 text-xs text-amber-200 leading-relaxed">
-              <p className="font-semibold text-amber-300 mb-1">Local Preview Mode Ready</p>
+            <div className="mb-5 rounded-xl border border-[#e7d39c] bg-[#fef9e7] p-3.5 text-xs text-[#6d4e08] leading-relaxed">
+              <p className="font-semibold mb-1">Local Preview Mode Ready</p>
               <p>
-                <code>.env.local</code> isn&apos;t linked to a Supabase project yet. You can try the
-                full interactive app immediately via <strong>Preview Demo Mode</strong> below!
+                <code>.env.local</code> isn&apos;t linked to a Supabase project yet. You can try
+                the full app immediately via <strong>Preview Interactive Demo</strong> below.
               </p>
             </div>
           )}
 
           {error && (
-            <div className="mb-4 rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-200 flex items-start gap-2">
-              <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+            <div className="mb-4 rounded-xl border border-[#f2c6c6] bg-[#fdecec] p-3 text-xs text-[#9b2c2c] flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 text-[#c94a4a] shrink-0 mt-0.5" />
               <span>{error}</span>
             </div>
           )}
 
           {message && (
-            <div className="mb-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-xs text-emerald-200 flex items-start gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+            <div className="mb-4 rounded-xl border border-[#b7e4c7] bg-[#e6f6ec] p-3 text-xs text-[#23543e] flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#2d6a4f] shrink-0 mt-0.5" />
               <span>{message}</span>
             </div>
           )}
@@ -166,7 +166,7 @@ export function LoginClient({ supabaseConfigured }: { supabaseConfigured: boolea
             type="button"
             onClick={handleGoogleLogin}
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2.5 bg-white hover:bg-slate-100 text-slate-900 font-semibold py-2.5 px-4 rounded-xl transition-colors disabled:opacity-60 cursor-pointer"
+            className="w-full flex items-center justify-center gap-2.5 bg-[#f7f6f2] hover:bg-[#efece6] border border-[#d6d2c8] text-[#1f2421] font-semibold py-2.5 px-4 rounded-xl transition-colors disabled:opacity-60 cursor-pointer"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -189,14 +189,14 @@ export function LoginClient({ supabaseConfigured }: { supabaseConfigured: boolea
             Continue with Google
           </button>
 
-          <div className="my-5 flex items-center gap-3 text-xs text-slate-500">
-            <div className="flex-1 h-px bg-slate-800" />
+          <div className="my-5 flex items-center gap-3 text-xs text-[#737b75]">
+            <div className="flex-1 h-px bg-[#e2dfd7]" />
             <span>or use email (Gmail / iCloud)</span>
-            <div className="flex-1 h-px bg-slate-800" />
+            <div className="flex-1 h-px bg-[#e2dfd7]" />
           </div>
 
           {/* Auth Mode Switcher */}
-          <div className="grid grid-cols-3 gap-1 p-1 rounded-xl bg-slate-950 border border-slate-800 mb-4 text-xs">
+          <div className="grid grid-cols-3 gap-1 p-1 rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] mb-4 text-xs">
             {(
               [
                 { id: "signin", label: "Sign In" },
@@ -214,8 +214,8 @@ export function LoginClient({ supabaseConfigured }: { supabaseConfigured: boolea
                 }}
                 className={`py-1.5 rounded-lg font-medium transition-colors cursor-pointer ${
                   mode === tab.id
-                    ? "bg-slate-800 text-white"
-                    : "text-slate-400 hover:text-slate-200"
+                    ? "bg-white text-[#1f2421] shadow-xs"
+                    : "text-[#656d67] hover:text-[#1f2421]"
                 }`}
               >
                 {tab.label}
@@ -226,32 +226,38 @@ export function LoginClient({ supabaseConfigured }: { supabaseConfigured: boolea
           <form onSubmit={handleEmailSubmit} className="space-y-3.5">
             {mode === "signup" && (
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Name</label>
+                <label className="block text-xs font-medium text-[#4a524d] mb-1">
+                  Name
+                </label>
                 <input
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Nazri"
-                  className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
+                  className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] placeholder:text-[#9aa19c] focus:outline-none focus:border-[#52b788] focus:bg-white"
                 />
               </div>
             )}
 
             <div>
-              <label className="block text-xs text-slate-400 mb-1">Email address</label>
+              <label className="block text-xs font-medium text-[#4a524d] mb-1">
+                Email address
+              </label>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@gmail.com or you@icloud.com"
-                className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
+                className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] placeholder:text-[#9aa19c] focus:outline-none focus:border-[#52b788] focus:bg-white"
               />
             </div>
 
             {mode !== "magic" && (
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Password</label>
+                <label className="block text-xs font-medium text-[#4a524d] mb-1">
+                  Password
+                </label>
                 <input
                   type="password"
                   required
@@ -259,7 +265,7 @@ export function LoginClient({ supabaseConfigured }: { supabaseConfigured: boolea
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Minimum 6 characters"
-                  className="w-full rounded-xl bg-slate-950 border border-slate-800 px-3.5 py-2.5 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
+                  className="w-full rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3.5 py-2.5 text-sm text-[#1f2421] placeholder:text-[#9aa19c] focus:outline-none focus:border-[#52b788] focus:bg-white"
                 />
               </div>
             )}
@@ -267,7 +273,7 @@ export function LoginClient({ supabaseConfigured }: { supabaseConfigured: boolea
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold py-2.5 px-4 rounded-xl transition-colors disabled:opacity-60 cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 bg-[#1f2421] hover:bg-[#323a35] text-[#f7f6f2] font-semibold py-2.5 px-4 rounded-xl transition-colors disabled:opacity-60 cursor-pointer"
             >
               {mode === "magic" ? (
                 <>
@@ -289,11 +295,11 @@ export function LoginClient({ supabaseConfigured }: { supabaseConfigured: boolea
           </form>
 
           {/* Instant Demo Button */}
-          <div className="mt-6 pt-5 border-t border-slate-800">
+          <div className="mt-6 pt-5 border-t border-[#e2dfd7]">
             <button
               type="button"
               onClick={() => router.push("/dashboard?demo=1")}
-              className="w-full flex items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 font-medium py-2.5 px-4 text-sm transition-colors cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 rounded-xl border border-[#b7e4c7] bg-[#e6f6ec] hover:bg-[#d8f3dc] text-[#23543e] font-medium py-2.5 px-4 text-sm transition-colors cursor-pointer"
             >
               <Play className="w-4 h-4" />
               Preview Interactive Demo (No Login Needed)

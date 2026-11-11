@@ -6,9 +6,9 @@ import { formatMoney } from "@/lib/finance";
 import type { BucketType, Category, RecurringBill } from "@/lib/types";
 
 const BUCKET_COLORS: Record<BucketType, string> = {
-  need: "#10b981",
-  want: "#f59e0b",
-  saving: "#06b6d4",
+  need: "#52b788",
+  want: "#d4a373",
+  saving: "#2d6a4f",
 };
 
 interface BillsBudgetsPanelProps {
@@ -85,14 +85,14 @@ export function BillsBudgetsPanel({
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
       {/* Left: Recurring Bills */}
       <div className="lg:col-span-6 space-y-4">
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+        <div className="rounded-2xl border border-[#e2dfd7] bg-white p-5 shadow-xs">
           <div className="flex items-center justify-between gap-3 mb-4">
             <div>
-              <h2 className="font-semibold text-white text-base flex items-center gap-2">
-                <Receipt className="w-5 h-5 text-amber-400" />
+              <h2 className="font-semibold text-[#1f2421] text-base flex items-center gap-2">
+                <Receipt className="w-5 h-5 text-[#2d6a4f]" />
                 Recurring Fixed Bills
               </h2>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-[#4a524d] mt-0.5">
                 Auto-reserved from Safe-to-Spend until logged in the current cycle.
               </p>
             </div>
@@ -100,7 +100,7 @@ export function BillsBudgetsPanel({
               <button
                 type="button"
                 onClick={onApplyPendingBills}
-                className="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-2 rounded-xl transition-colors cursor-pointer"
+                className="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold bg-[#2d6a4f] hover:bg-[#23543e] text-white px-3 py-2 rounded-xl transition-colors cursor-pointer"
               >
                 <Check className="w-3.5 h-3.5" />
                 Log {pendingCount} Unpaid
@@ -115,7 +115,7 @@ export function BillsBudgetsPanel({
               value={billName}
               onChange={(e) => setBillName(e.target.value)}
               placeholder="Bill name (e.g. Rent)"
-              className="sm:col-span-5 rounded-xl bg-slate-950 border border-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
+              className="sm:col-span-5 rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3 py-2 text-sm text-[#1f2421] placeholder:text-[#9aa19c] focus:outline-none focus:border-[#52b788] focus:bg-white"
             />
             <input
               type="number"
@@ -125,12 +125,12 @@ export function BillsBudgetsPanel({
               value={billAmount}
               onChange={(e) => setBillAmount(e.target.value)}
               placeholder={`Amount (${currency})`}
-              className="sm:col-span-3 rounded-xl bg-slate-950 border border-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
+              className="sm:col-span-3 rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3 py-2 text-sm text-[#1f2421] placeholder:text-[#9aa19c] focus:outline-none focus:border-[#52b788] focus:bg-white"
             />
             <select
               value={billCategoryId}
               onChange={(e) => setBillCategoryId(e.target.value)}
-              className="sm:col-span-2 rounded-xl bg-slate-950 border border-slate-800 px-2 py-2 text-xs text-white focus:outline-none focus:border-emerald-500"
+              className="sm:col-span-2 rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-2 py-2 text-xs text-[#1f2421] focus:outline-none focus:border-[#52b788]"
             >
               {categories.map((cat) => (
                 <option key={cat.id} value={cat.id}>
@@ -146,11 +146,11 @@ export function BillsBudgetsPanel({
                 title="Due day of month"
                 value={billDueDay}
                 onChange={(e) => setBillDueDay(e.target.value)}
-                className="w-12 rounded-xl bg-slate-950 border border-slate-800 px-2 py-2 text-xs text-white text-center focus:outline-none focus:border-emerald-500"
+                className="w-12 rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-2 py-2 text-xs text-[#1f2421] text-center focus:outline-none focus:border-[#52b788]"
               />
               <button
                 type="submit"
-                className="flex-1 inline-flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white rounded-xl transition-colors cursor-pointer"
+                className="flex-1 inline-flex items-center justify-center bg-[#1f2421] hover:bg-[#323a35] text-white rounded-xl transition-colors cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
               </button>
@@ -159,7 +159,7 @@ export function BillsBudgetsPanel({
 
           <div className="space-y-2.5">
             {bills.length === 0 ? (
-              <p className="text-xs text-slate-500 text-center py-6">
+              <p className="text-xs text-[#737b75] text-center py-6">
                 No fixed bills yet. Add rent, car loan, internet, or subscriptions above.
               </p>
             ) : (
@@ -171,13 +171,13 @@ export function BillsBudgetsPanel({
                 return (
                   <div
                     key={bill.id}
-                    className="flex items-center justify-between gap-3 rounded-xl bg-slate-950/70 border border-slate-800/80 px-3.5 py-2.5"
+                    className="flex items-center justify-between gap-3 rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] px-3.5 py-2.5"
                   >
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
                         <span
                           className={`text-sm font-medium truncate ${
-                            bill.is_active ? "text-white" : "text-slate-500 line-through"
+                            bill.is_active ? "text-[#1f2421]" : "text-[#9aa19c] line-through"
                           }`}
                         >
                           {bill.name}
@@ -186,34 +186,34 @@ export function BillsBudgetsPanel({
                           <span
                             className={`text-[10px] px-2 py-0.5 rounded-full border ${
                               isPending
-                                ? "bg-amber-500/10 text-amber-300 border-amber-500/30"
-                                : "bg-emerald-500/10 text-emerald-300 border-emerald-500/30"
+                                ? "bg-[#fef3c7] text-[#92400e] border-[#fde68a]"
+                                : "bg-[#d8f3dc] text-[#1b4332] border-[#b7e4c7]"
                             }`}
                           >
                             {isPending ? "Pending" : "Logged"}
                           </span>
                         )}
                       </div>
-                      <p className="text-[11px] text-slate-500">
+                      <p className="text-[11px] text-[#656d67]">
                         Due day {bill.due_day} · {catNameLookup}
                       </p>
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="font-mono text-sm font-semibold text-slate-200">
+                      <span className="font-mono text-sm font-semibold text-[#1f2421]">
                         {formatMoney(bill.amount, currency)}
                       </span>
                       <button
                         type="button"
                         onClick={() => onToggleBill(bill.id, !bill.is_active)}
-                        className="text-[11px] px-2 py-1 rounded-lg border border-slate-800 text-slate-400 hover:text-white cursor-pointer"
+                        className="text-[11px] px-2 py-1 rounded-lg border border-[#dcd8cf] bg-white text-[#4a524d] hover:text-[#1f2421] cursor-pointer"
                       >
                         {bill.is_active ? "Disable" : "Enable"}
                       </button>
                       <button
                         type="button"
                         onClick={() => onDeleteBill(bill.id)}
-                        className="p-1.5 rounded-lg text-slate-500 hover:text-rose-400 cursor-pointer"
+                        className="p-1.5 rounded-lg text-[#737b75] hover:text-[#c94a4a] cursor-pointer"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
@@ -228,13 +228,13 @@ export function BillsBudgetsPanel({
 
       {/* Right: Category Budgets */}
       <div className="lg:col-span-6 space-y-4">
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+        <div className="rounded-2xl border border-[#e2dfd7] bg-white p-5 shadow-xs">
           <div className="mb-4">
-            <h2 className="font-semibold text-white text-base flex items-center gap-2">
-              <SlidersHorizontal className="w-5 h-5 text-cyan-400" />
+            <h2 className="font-semibold text-[#1f2421] text-base flex items-center gap-2">
+              <SlidersHorizontal className="w-5 h-5 text-[#2d6a4f]" />
               Category Limits & 50/30/20 Buckets
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-[#4a524d] mt-0.5">
               Customize monthly spending caps and map each category to Need, Want, or Saving.
             </p>
           </div>
@@ -246,12 +246,12 @@ export function BillsBudgetsPanel({
               value={catName}
               onChange={(e) => setCatName(e.target.value)}
               placeholder="New category"
-              className="sm:col-span-5 rounded-xl bg-slate-950 border border-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
+              className="sm:col-span-5 rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3 py-2 text-sm text-[#1f2421] placeholder:text-[#9aa19c] focus:outline-none focus:border-[#52b788] focus:bg-white"
             />
             <select
               value={catBucket}
               onChange={(e) => setCatBucket(e.target.value as BucketType)}
-              className="sm:col-span-3 rounded-xl bg-slate-950 border border-slate-800 px-2.5 py-2 text-xs text-white focus:outline-none focus:border-emerald-500"
+              className="sm:col-span-3 rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-2.5 py-2 text-xs text-[#1f2421] focus:outline-none focus:border-[#52b788]"
             >
               <option value="need">Need</option>
               <option value="want">Want</option>
@@ -264,11 +264,11 @@ export function BillsBudgetsPanel({
               value={catLimit}
               onChange={(e) => setCatLimit(e.target.value)}
               placeholder="Limit"
-              className="sm:col-span-3 rounded-xl bg-slate-950 border border-slate-800 px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+              className="sm:col-span-3 rounded-xl bg-[#f7f6f2] border border-[#dcd8cf] px-3 py-2 text-sm text-[#1f2421] focus:outline-none focus:border-[#52b788] focus:bg-white"
             />
             <button
               type="submit"
-              className="sm:col-span-1 inline-flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white rounded-xl py-2 cursor-pointer"
+              className="sm:col-span-1 inline-flex items-center justify-center bg-[#1f2421] hover:bg-[#323a35] text-white rounded-xl py-2 cursor-pointer"
             >
               <Plus className="w-4 h-4" />
             </button>
@@ -278,14 +278,16 @@ export function BillsBudgetsPanel({
             {categories.map((cat) => (
               <div
                 key={cat.id}
-                className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-slate-950/70 border border-slate-800/80 px-3.5 py-2.5"
+                className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[#f7f6f2] border border-[#e2dfd7] px-3.5 py-2.5"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
                   <span
                     className="w-2.5 h-2.5 rounded-full shrink-0"
                     style={{ backgroundColor: cat.color }}
                   />
-                  <span className="text-sm text-white font-medium truncate">{cat.name}</span>
+                  <span className="text-sm text-[#1f2421] font-medium truncate">
+                    {cat.name}
+                  </span>
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -294,7 +296,7 @@ export function BillsBudgetsPanel({
                     onChange={(e) =>
                       onUpdateCategory(cat.id, { bucket: e.target.value as BucketType })
                     }
-                    className="rounded-lg bg-slate-900 border border-slate-800 px-2 py-1 text-xs text-slate-300"
+                    className="rounded-lg bg-white border border-[#dcd8cf] px-2 py-1 text-xs text-[#4a524d]"
                   >
                     <option value="need">Need</option>
                     <option value="want">Want</option>
@@ -312,13 +314,13 @@ export function BillsBudgetsPanel({
                         onUpdateCategory(cat.id, { monthly_limit: val });
                       }
                     }}
-                    className="w-24 rounded-lg bg-slate-900 border border-slate-800 px-2.5 py-1 text-xs text-right font-mono text-white"
+                    className="w-24 rounded-lg bg-white border border-[#dcd8cf] px-2.5 py-1 text-xs text-right font-mono text-[#1f2421]"
                   />
 
                   <button
                     type="button"
                     onClick={() => onDeleteCategory(cat.id)}
-                    className="p-1.5 rounded-lg text-slate-500 hover:text-rose-400 cursor-pointer"
+                    className="p-1.5 rounded-lg text-[#737b75] hover:text-[#c94a4a] cursor-pointer"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
