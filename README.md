@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CukupKe — Monthly Savings & Finance Control
 
-## Getting Started
+A personal monthly savings and finance control web app built on the **100% free stack** (Next.js + Tailwind CSS + Supabase PostgreSQL + Vercel Hobby).
 
-First, run the development server:
+## Key Features
+- **Safe-to-Spend & Daily Allowance**: Automatically deducts your monthly savings target and unpaid fixed bills upfront (`Income − Locked Savings − Pending Bills − Spent`).
+- **Wishlist & Savings Goal Planner**: Add what you want to buy, choose either a **Target Date** ("how much per month/week/day?") or a **Monthly Budget** ("when can I afford it?"), check feasibility against your surplus, and top up anytime.
+- **Custom Payday Cycle**: Track calendar months (`1st`) or your actual salary date (e.g. `25th – 24th`).
+- **1-Click Recurring Bills**: Save fixed monthly commitments once and log unpaid bills into the current cycle with one click.
+- **50 / 30 / 20 Cashflow Split & Category Caps**: Color-coded progress bars (`Green`, `Amber` ≥ 80%, `Red` ≥ 100%) + CSV export.
+- **Free Auth**: Google Sign-In + Email/Password + Magic Link (works with Gmail, iCloud, or any email) protected by Supabase Row Level Security (RLS).
+- **Interactive Demo Mode**: Preview the full app immediately in your browser before connecting Supabase.
 
+---
+
+## Local Development
+
+### 1. Install & Run Immediately (Demo Mode)
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+Open [http://localhost:3000](http://localhost:3000) and click **Preview Interactive Demo**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2. Connect Supabase & Google Sign-In (Free Tier)
+1. Create a free project in [Supabase Dashboard](https://supabase.com/dashboard).
+2. Open **SQL Editor** in Supabase and run [`supabase/schema.sql`](./supabase/schema.sql).
+3. Copy `.env.example` to `.env.local` and fill in your Supabase URL & Anon Key:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+   ```
+4. *(For Google Sign-In)*:
+   - In **Google Cloud Console → APIs & Services → Credentials**, create an **OAuth 2.0 Client ID** (Web application).
+   - Add Supabase's callback URL (`https://<your-project-ref>.supabase.co/auth/v1/callback`) as an Authorized Redirect URI.
+   - Paste the Google Client ID & Secret into **Supabase → Authentication → Providers → Google**.
+   - Under **Supabase → Authentication → URL Configuration**, add `http://localhost:3000/auth/callback` (and your Vercel URL) to Redirect URLs.
