@@ -8,10 +8,10 @@ import {
   ArrowLeft,
   CheckCircle2,
   Mail,
-  PiggyBank,
   Play,
   Sparkles,
 } from "lucide-react";
+import { CukupKeLogo } from "@/components/cukupke-logo";
 import { createClient } from "@/lib/supabase/client";
 
 type AuthMode = "signin" | "signup" | "magic";
@@ -126,9 +126,7 @@ export function LoginClient({ supabaseConfigured }: { supabaseConfigured: boolea
 
         <div className="rounded-2xl border border-[#e2dfd7] bg-white p-6 sm:p-8 shadow-sm">
           <div className="flex items-center gap-2.5 mb-2">
-            <div className="w-9 h-9 rounded-xl bg-[#d8f3dc] border border-[#b7e4c7] flex items-center justify-center text-[#2d6a4f]">
-              <PiggyBank className="w-5 h-5" />
-            </div>
+            <CukupKeLogo className="w-9 h-9" />
             <h1 className="text-xl font-bold text-[#1f2421]">
               Sign in to Cukup<span className="text-[#2d6a4f]">Ke</span>
             </h1>

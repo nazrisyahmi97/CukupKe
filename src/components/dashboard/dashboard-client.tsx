@@ -11,7 +11,6 @@ import {
   ChevronRight,
   Download,
   LogOut,
-  PiggyBank,
   Plus,
   Receipt,
   RotateCcw,
@@ -44,6 +43,7 @@ import type {
   UserProfile,
 } from "@/lib/types";
 import { BillsBudgetsPanel } from "./bills-budgets-panel";
+import { CukupKeLogo } from "../cukupke-logo";
 import { GoalsPanel } from "./goals-panel";
 import { LoanCalculatorPanel } from "./loan-calculator-panel";
 import { OnboardingModal } from "./onboarding-modal";
@@ -644,9 +644,7 @@ export function DashboardClient({
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-xl bg-[#d8f3dc] border border-[#b7e4c7] flex items-center justify-center text-[#2d6a4f]">
-                <PiggyBank className="w-4 h-4" />
-              </div>
+              <CukupKeLogo className="w-8 h-8" />
               <span className="font-semibold text-[#1f2421]">
                 Cukup<span className="text-[#2d6a4f]">Ke</span>
               </span>

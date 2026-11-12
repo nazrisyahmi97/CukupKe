@@ -4,12 +4,12 @@ import {
   Calculator,
   CalendarClock,
   CheckCircle2,
-  PiggyBank,
   Receipt,
   ShieldCheck,
   Target,
   Wallet,
 } from "lucide-react";
+import { CukupKeLogo } from "@/components/cukupke-logo";
 
 export default function HomePage() {
   return (
@@ -18,9 +18,7 @@ export default function HomePage() {
       <header className="border-b border-[#e2dfd7] bg-[#f7f6f2]/90 backdrop-blur-md sticky top-0 z-30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-[#d8f3dc] border border-[#b7e4c7] flex items-center justify-center text-[#2d6a4f]">
-              <PiggyBank className="w-5 h-5" />
-            </div>
+            <CukupKeLogo className="w-9 h-9" />
             <span className="font-semibold tracking-tight text-lg text-[#1f2421]">
               Cukup<span className="text-[#2d6a4f]">Ke</span>
             </span>
